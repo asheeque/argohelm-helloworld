@@ -19,3 +19,4 @@ selector_labels:
 
 env:
   LISTEN_PORT: 3000
+  env: dev
