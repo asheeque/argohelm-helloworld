@@ -4,7 +4,7 @@
 
 replica_count: 2
 image: dockercloud/hello-world:latest
-namespace: helloworld-ns
+namespace: helloworld-ns2
 containerPort: 3000
 
 service:
