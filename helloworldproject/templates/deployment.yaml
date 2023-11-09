@@ -25,5 +25,6 @@ spec:
         ports:
         - containerPort: {{ .Values.containerPort }}
         env:
-        - name: LISTEN_PORT
-          value: "3000"
+          {{- range $key,$value := .Values.env}}
+          {{ $key }}: {{ $value | quote }}
+          {{- end }}

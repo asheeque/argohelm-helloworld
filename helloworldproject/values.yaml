@@ -7,7 +7,6 @@ image: dockercloud/hello-world:latest
 namespace: helloworld-ns
 containerPort: 3000
 
-
 service:
   type: NodePort
   port: 80
@@ -17,3 +16,6 @@ service:
 selector_labels:
   app: helloworldpod
   env: dev
+
+env:
+  LISTEN_PORT: 3000
