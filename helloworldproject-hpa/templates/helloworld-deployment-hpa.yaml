@@ -5,12 +5,14 @@ metadata:
 spec:
   maxReplicas: 4
   metrics:
-  - resource:
+  - type: Resource
+    resource:
       name: cpu
       target:
         type: Utilization
         averageUtilization: 20
-  - resource:
+  - type: Resource
+    resource:
       name: memory
       target:
         type: Utilization
