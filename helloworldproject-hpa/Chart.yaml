@@ -1,5 +1,5 @@
 apiVersion: v2
-name: helloworldproject_hpa
+name: helloworldproject-hpa
 description: A Helm chart for helloworldproject Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
