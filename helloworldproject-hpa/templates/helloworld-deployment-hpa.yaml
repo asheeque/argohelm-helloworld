@@ -8,9 +8,13 @@ spec:
   - resource:
       name: cpu
       target:
-        averageUtilization: 20
         type: Utilization
-    type: Resource
+        averageUtilization: 20
+  - resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 20
   minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
