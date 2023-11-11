@@ -10,16 +10,12 @@ spec:
       {{ $key }}: {{ $value }}
       {{- end }}
   template:
-  
     metadata:
       labels:
         {{- range $key,$value := .Values.selector_labels}}
         {{ $key }}: {{ $value }}
         {{- end }}
     spec:
-      {{- if .Values.replica_count }}
-      replicas: {{ .Values.replica_count }}
-      {{- end }}
       containers:
       - name: {{ .Chart.Name }}
         image: {{ .Values.image}}
