@@ -4,9 +4,6 @@ metadata:
   name: {{ .Release.Name }}-deploy
   namespace: {{ .Values.namespace}}
 spec:
-  {{- if .Values.replica_count }}
-  replicas: {{ .Values.replica_count }}
-  {{- end }}
   selector:
     matchLabels:
       {{- range $key,$value := .Values.selector_labels}}
@@ -24,4 +21,16 @@ spec:
         image: {{ .Values.image}}
         ports:
         - containerPort: {{ .Values.containerPort }}
-  
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "125m"
+          limits:
+            memory: "64Mi"
+            cpu: "250m"
+        env:
+          {{- range $key,$value := .Values.env}}
+          - name: {{ $key }}
+            value : {{ $value | quote }}
+          {{- end }}
+
