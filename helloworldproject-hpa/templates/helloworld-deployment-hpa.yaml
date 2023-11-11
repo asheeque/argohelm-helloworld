@@ -3,21 +3,17 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: {{ .Release.Name }}-scaler
 spec:
-  maxReplicas: 4
+  maxReplicas: {{ .Values.max_replicas }}
+  minReplicas: {{ .Values.min_replicas }}
   metrics:
+  {{- range $key,$value := .Values.resources}}
   - type: Resource
     resource:
-      name: cpu
+      name: {{ $key }}
       target:
         type: Utilization
-        averageUtilization: 20
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 80
-  minReplicas: 1
+        averageUtilization: {{ $value }}
+  {{- end }}
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment

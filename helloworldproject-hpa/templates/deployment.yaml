@@ -23,11 +23,11 @@ spec:
         - containerPort: {{ .Values.containerPort }}
         resources:
           requests:
-            memory: "128Mi"
-            cpu: "125m"
+            memory: {{ .Values.requests.memory | quote }}
+            cpu: {{ .Values.requests.cpu | quote }}
           limits:
-            memory: "256Mi"
-            cpu: "250m"
+            memory: {{ .Values.limits.memory | quote }}
+            cpu: {{ .Values.limits.cpu | quote }}
         env:
           {{- range $key,$value := .Values.env}}
           - name: {{ $key }}

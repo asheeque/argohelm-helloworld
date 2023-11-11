@@ -2,7 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replica_count: 2
+min_replicas: 1
+max_replicas: 1
 image: dockercloud/hello-world:latest
 namespace: helloworld-ns
 containerPort: 3000
@@ -20,3 +21,15 @@ selector_labels:
 env:
   LISTEN_PORT: 3000
   env: dev
+
+resources:
+  cpu: 20
+  memory: 80
+
+requests:
+  memory: 128Mi
+  cpu: 125m
+
+limits:
+  memory: 256Mi
+  cpu: 250m
